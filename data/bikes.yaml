@@ -16,3 +16,19 @@
   color: RAL5018
   bike: FR8
   image: images/4AEDF604-5AE2-4ACA-B67B-4407B5C1B921.jpg
+- photo:
+  copyright: "Henry @ WorkCycles"
+  src: https://flickr.com/photos/henryinamsterdam/26892352033
+  bike: FR8
+  color: 
+    - RAL6029
+    - RAL5015
+  image: images/A82751F1-A9C4-48B6-B87A-845CEABA0B2B.jpg
+- photo:
+  copyright: "@bklynspoke"
+  src: https://www.instagram.com/p/CVD66OaFkJ59AMDRwyaNoO3IWbwoHS_3zWyKso0/
+  color:
+    - RAL7022 # grey
+    - RAL5015 # blue
+    - RAL2004 # orange
+  image: images/6BAEDE61-F7E3-49CA-8A51-540BD44F5F19.jpg
