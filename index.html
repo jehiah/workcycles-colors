@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workcycles RAL Color Selector</title>
+    <style type="text/css">
+body {
+  background-color: #f0f0f0;
+}
+
+h1 {
+  font-family: 'Source Sans Pro';
+  font-size: 36px;
+  font-weight: 700;
+}
+.thumbnail {
+  border: 5px solid #ffff;
+  margin: 5px;
+}
+      
+    </style>
+  </head>
+  <body>
+    <h1>Workcycles RAL Color Selector</h1>
+
+<div id="images"></div>
+
+<script type="module">
+
+import * as d3 from "https://cdn.skypack.dev/d3@7";
+import {json} from "https://cdn.skypack.dev/d3-fetch@3";
+
+const div = d3.selectAll("#images");
+json("bikes.json").then((data) => {
+  div.selectAll("img").data(data).join("img")
+  .attr("src", d => {return d.image})  
+  .attr("width", 200)
+  .attr("height", 200)
+  .attr("class", "thumbnail")
+})
+
+</script>
+
+
+  </body>
+</html>
