@@ -28,6 +28,15 @@ h1 {
   margin: 0;
   padding: 0;
 }
+
+#summary a:link, #summary a:visited {
+  color: #006437;
+}
+
+#ral {
+  padding: 1rem 0;
+}
+
 .frame {
   display: inline-block;
   border: 5px solid #fff;
@@ -81,6 +90,9 @@ h1 {
   margin: 2px;
   border: 2px solid #fff;
   cursor: pointer;
+}
+.selector.dark {
+  color: #ffffff;  
 }
 .selector:hover {
   border: 2px solid #666;
@@ -143,19 +155,29 @@ Also <a href="https://instagram.com/papafr8">@papafr8</a> on Instagram</p>
 
 import * as d3 from "https://cdn.skypack.dev/d3@7";
 import {json} from "https://cdn.skypack.dev/d3-fetch@3";
+import {rgb} from "https://cdn.skypack.dev/d3-color@3";
+import {differenceEuclideanRGB} from 'https://cdn.skypack.dev/d3-color-difference';
 
 const images = d3.selectAll("#images");
 const colors = new Set();
 const selectedColors = new Set();
 const ral_colors = {
-  "RAL1028": "#FFAB01",
-  "RAL3018": "#E6244B",
-  "RAL5018": "#48D5EB", //"#3E898F", ?
-  "RAL6029": "#327E43",
-  "RAL5012": "#3682BA",
-  "RAL5015": "#2270B1",
-  "RAL7022": "#4D4943",
-  "RAL2004": "#E35403",
+  "RAL1028": d3.rgb("#FFAB01"),
+  "RAL3018": d3.rgb("#E6244B"),
+  "RAL5018": d3.rgb("#48D5EB"), //"#3E898F", ?
+  "RAL6029": d3.rgb("#327E43"),
+  "RAL5012": d3.rgb("#3682BA"),
+  "RAL5015": d3.rgb("#2270B1"),
+  "RAL7022": d3.rgb("#4D4943"),
+  "RAL2004": d3.rgb("#E35403"),
+}
+const colorBlack = d3.rgb("#000000");
+const colorWhite = d3.rgb("#ffffff");
+function isDark(c) {
+  if (differenceEuclideanRGB(c, colorBlack) < differenceEuclideanRGB(c, colorWhite)) {
+    return true
+  }
+  return false
 }
 
 let ral =   d3.select("#ral").selectAll("div.selector");
@@ -185,6 +207,7 @@ function selectColor(_, c) {
 function renderColors() {
   ral.data(colors).join("div")
   .attr("class", "selector")
+  .classed("dark", d => isDark(ral_colors[d]))
   .style("background-color", d => ral_colors[d])
   .attr("title", d => d)
   // .data("color")
@@ -199,8 +222,6 @@ function updateImages(data) {
 
   f.append("img")
   .attr("src", d => d.image)  
-  // .attr("width", 200)
-  // .attr("height", 200)
   .attr("class", "thumbnail")
 
   let attribution = f.append("div")
