@@ -1,10 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Workcycle RAL Color Selector</title>
-    <style type="text/css">
+{{template "base" .}}
+{{define "title"}}WorkCycles RAL Colors{{end}}
+{{define "head"}}
+
+<style type="text/css">
 body {
   background-color: #f0f0f0;
   font-family: sans-serif;
@@ -156,10 +154,12 @@ footer p {
 }
 
     </style>
-  </head>
-  <body>
+{{end}}
+
+{{define "body"}}
+
 <nav>
-  <h1>WorkCycles <span class="ral-logo-wrap"><span class="ral-logo">RAL</span></span> Color Selector</h1>
+  <h1>WorkCycles <span class="ral-logo-wrap"><span class="ral-logo">RAL</span></span> Colors</h1>
   <a href="https://workcycles.com/?utm_source=workcycle_RAL_color_selector" class="float-right external-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> workcycles.com</a>
 </nav>
 
@@ -208,7 +208,7 @@ function isDark(c) {
 let ral =   d3.select("#ral").selectAll("div.selector");
 let frames = d3.select("#images").selectAll("div.frame");
 let sourceData = null;
-json("bikes.json").then((data) => {
+json("/static/bikes.json").then((data) => {
   data.forEach(d => {
     if (typeof(d.color) == "string") {d.color = [d.color]}
     d.color.forEach(dd => colors.add(dd))
@@ -267,7 +267,4 @@ function updateImages(data) {
 }
 
 </script>
-
-
-  </body>
-</html>
+{{end}}
