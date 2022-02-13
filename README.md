@@ -1,6 +1,6 @@
 
-# Workcycle RAL
+# Workcycle RAL Colors
 
-This site is deidcated to indexing Workcycle bikes with custom RAL color schemes
+This site is deidcated to indexing [WorkCycles bikes](https://workcycles.com/) with custom RAL color schemes
 
-https://workcycles.com/
+https://workcycles-colors.com/
