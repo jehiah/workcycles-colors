@@ -188,12 +188,12 @@ const ral_colors = {
   // https://www.ral-farben.de/en/all-ral-colours#classic
   "RAL1028": d3.rgb("#FFAB01"),
   "RAL3018": d3.rgb("#E6244B"),
-  "RAL5018": d3.rgb("#048B8C"), //"#3E898F", ? #058b8c ? 48D5EB 
+  "RAL5018": d3.rgb("#48d5eb"), //"#3E898F", ? #058b8c ? 48D5EB 
   "RAL6029": d3.rgb("#327E43"),
   "RAL5012": d3.rgb("#3682BA"),
-  "RAL5015": d3.rgb("#2270B1"),
+  "RAL5015": d3.rgb("#1190DC"),
   "RAL7022": d3.rgb("#4D4943"),
-  "RAL2004": d3.rgb("#E35403"),
+  "RAL2004": d3.rgb("#FF4C1E"),
 }
 const colorBlack = d3.rgb("#000000");
 const colorWhite = d3.rgb("#ffffff");
@@ -229,7 +229,7 @@ function selectColor(_, c) {
 }
 
 function renderColors() {
-  ral.data(colors).join("div")
+  ral.data(Array.from(colors).sort()).join("div")
   .attr("class", "selector")
   .classed("dark", d => isDark(ral_colors[d]))
   .style("background-color", d => ral_colors[d])
