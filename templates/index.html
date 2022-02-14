@@ -61,6 +61,7 @@ h1 {
   border: 5px solid #fff;
   background-color: #fff;
   margin: 5px;
+  overflow: clip;
 }
 .frame.inactive {
   border: 5px solid #f0f0f0;
@@ -68,17 +69,6 @@ h1 {
 .frame > img {
   height:  200px;
   display: block;
-}
-.frame.inactive > img {
-  opacity: .25;
-  transition-property: opacity;
-  transition-duration: 200ms;
-}
-
-.frame.inactive > .attribution > .ral {
-  opacity: .25;
-  transition-property: opacity;
-  transition-duration: 200ms;
 }
 
 .thumbnail {
@@ -115,6 +105,10 @@ h1 {
 }
 .selector:hover {
   border: 2px solid #666;
+}
+.selector.inactive {
+  filter: grayscale(1);
+  border: 2px dashed #999;
 }
 
 .ral {
@@ -178,6 +172,7 @@ import * as d3 from "https://cdn.skypack.dev/d3@7";
 import {json} from "https://cdn.skypack.dev/d3-fetch@3";
 import {rgb} from "https://cdn.skypack.dev/d3-color@3";
 import {differenceEuclideanRGB} from 'https://cdn.skypack.dev/d3-color-difference';
+import {transition} from "https://cdn.skypack.dev/d3-transition@3";
 
 const images = d3.selectAll("#images");
 const colors = new Set();
@@ -205,7 +200,7 @@ function isDark(c) {
 }
 
 let ral =   d3.select("#ral").selectAll("div.selector");
-let frames = d3.select("#images").selectAll("div.frame");
+// let frames = d3.select("#images").selectAll("div.frame");
 let sourceData = null;
 json("/static/bikes.json").then((data) => {
   data.forEach(d => {
@@ -218,14 +213,20 @@ json("/static/bikes.json").then((data) => {
 })
 
 function selectColor(_, c) {
-  if (selectedColors.has(c)) {
-    selectedColors.delete(c)
+  if (selectedColors.size == 1) {
+    selectedColors.clear(c)
   } else {
     selectedColors.add(c)
   }
-  console.log("selectedColors", selectedColors)
-  d3.select("#images").selectAll("div.frame")
-  .classed("inactive", d => selectedColors.size != 0 && ! d.color.some(dd => selectedColors.has(dd)))
+  // console.log("selectedColors", selectedColors)
+
+  d3.select("#ral").selectAll("div.selector")
+  .classed("inactive", d => selectedColors.size != 0 && ! selectedColors.has(d))
+
+  // d3.select("#images").selectAll("div.frame")
+  // .classed("inactive", d => selectedColors.size != 0 && ! d.color.some(dd => selectedColors.has(dd)))
+
+  updateImages(sourceData.filter(d => selectedColors.size == 0 || d.color.some(dd => selectedColors.has(dd))))
 }
 
 function renderColors() {
@@ -240,29 +241,40 @@ function renderColors() {
 }
 
 function updateImages(data) {
-  let f  = frames.data(data)
-  .join("div")
-  .attr("class", "frame")
+  const t = d3.transition().duration(450);
+  d3.select("#images").selectAll("div.frame")
+  .data(data, d => d.image)
+  .join(
+    enter => {
+      let f = enter.append("div").attr("class", "frame")
 
-  f.append("img")
-  .attr("src", d => d.image)  
-  .attr("class", "thumbnail")
+      f.append("img")
+      .attr("src", d => d.image)  
+      .attr("class", "thumbnail")
 
-  let attribution = f.append("div")
-  .attr("class", "attribution")
+      let attribution = f.append("div")
+      .attr("class", "attribution")
 
-  attribution.selectAll("div.ral")
-  .data(d => d.color)
-  .join("div")
-  .attr("class", "ral")
-  .style("background-color", d => {return ral_colors[d]})
-  .attr("title", d => d)
-  .on("click", selectColor)
+      attribution.selectAll("div.ral")
+      .data(d => d.color)
+      .join("div")
+      .attr("class", "ral")
+      .style("background-color", d => {return ral_colors[d]})
+      .attr("title", d => d)
+      .on("click", selectColor)
 
-  attribution.append("a")
-    .attr("class", "src")
-    .attr("href", d => d.src)
-    .text(d => d.copyright)
+      attribution.append("a")
+        .attr("class", "src")
+        .attr("href", d => d.src)
+        .text(d => d.copyright)
+    },
+    update => update,
+    exit => exit.transition(t)
+      .style("width", "0px")
+      .style("border-width", "0px")
+      .remove()
+    )
+
 }
 
 </script>
