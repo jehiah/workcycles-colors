@@ -3,46 +3,6 @@
 {{define "head"}}
 
 <style type="text/css">
-body {
-  background-color: #f0f0f0;
-  font-family: sans-serif;
-}
-svg {
-  vertical-align: middle;
-}
-nav {
-  display: block;
-  background-color: #fff;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-h1 {
-  display: inline-block;
-  font-family: sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  margin: 0;
-  padding: 0;
-}
-
-.ral-logo-wrap {
-  color: #fff;
-  background-color: #E35403;
-  border-radius: 8px;
-  font-size: 30px;
-  line-height: 36px;
-  font-weight: 300;
-  display: inline-block;
-  vertical-align: text-bottom;
-}
-.ral-logo {
-  border-radius: 4px;
-  border: 2px solid #fff;
-  margin: 4px;
-  padding: 0 .5rem;
-  display: inline-block;
-}
 
 #summary {
   padding: 0.5rem;
@@ -81,14 +41,6 @@ h1 {
   height: 20px;
 }
 
-.float-right {
-  float: right;
-}
-.external-link {
-  color: #006437;
-  font-weight: 600;
-  font-size: 18px;
-}
 .selector {
   display: inline-block;
   width: 50px;
@@ -147,34 +99,15 @@ footer p {
 }
 
 @media (max-width: 575.98px) {
-  h1 {
-    font-size: 20px;
-  }
-  .ral-logo-wrap {
-    font-size: 16px;
-    line-height: 20px;
-  }
-  .ral-logo {
-    margin: 2px;
-  }
   .frame > img {
     height:  150px;
   }
-  .external-link {
-    font-size: 12px;
-  }
-
 }
 
     </style>
 {{end}}
 
 {{define "body"}}
-
-<nav>
-  <h1>WorkCycles <span class="ral-logo-wrap"><span class="ral-logo">RAL</span></span> Colors</h1>
-  <a href="https://workcycles.com/?utm_source=workcycle_RAL_color_selector" class="float-right external-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> workcycles.com</a>
-</nav>
 
 <div id="summary">Interested in buying a WorkCycles Fr8, Gr8 or Kr8 with custom <a href="https://www.ralcolor.com/">RAL colors</a>? Here are some unique color combinations from happy customers.</div>
 
@@ -184,6 +117,8 @@ footer p {
 <p>Made with ❤️ by <a href="https://jehiah.cz/">jehiah.cz</a>/<a href="https://twitter.com/jehiah">@jehiah</a><br>
   Proud owner of a WorkCycle Fr8 since 2017<br>
 Also <a href="https://instagram.com/papafr8">@papafr8</a> on Instagram</p>
+<br><br>
+<p>Have a photo to contribute? <a href="/upload">Upload it</a></p>
 </footer>
 
 <script type="module">

@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"embed"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"html/template"
@@ -18,6 +19,7 @@ import (
 
 	"cloud.google.com/go/storage"
 	"github.com/dustin/go-humanize"
+	"github.com/google/uuid"
 	"github.com/gorilla/handlers"
 	"github.com/julienschmidt/httprouter"
 )
@@ -108,6 +110,77 @@ func (a *App) Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params
 	}
 }
 
+func (a *App) Upload(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	t := newTemplate(a.templateFS, "upload.html")
+	w.Header().Set("content-type", "text/html")
+	err := t.ExecuteTemplate(w, "upload.html", nil)
+	if err != nil {
+		log.Print(err)
+		http.Error(w, "Internal Server Error", 500)
+	}
+}
+func (a *App) UploadPost(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	if err := r.ParseMultipartForm(1024 * 1024 * 15); err != nil {
+		log.Print(err)
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+	for _, n := range []string{"copyright", "colors"} {
+		if v := r.PostFormValue(n); v == "" {
+			http.Error(w, fmt.Sprintf("required field %q empty", n), 400)
+			return
+		}
+	}
+	f, h, err := r.FormFile("img")
+	if err != nil {
+		log.Print(err)
+		http.Error(w, "Image not found", 400)
+		return
+	}
+
+	filename := uuid.NewString()
+	metadata := filename + ".json"
+	switch h.Header.Get("Content-Type") {
+	case "image/jpeg":
+		filename += ".jpg"
+	case "image/png":
+		filename += ".png"
+	}
+
+	log.Printf("uploading to gs://workcycles-colors/uploaded/%s", filename)
+	fw := a.gsclient.Bucket("workcycles-colors").Object("uploaded/" + filename).NewWriter(r.Context())
+	_, err = io.Copy(fw, f)
+	if err != nil {
+		log.Print(err)
+		http.Error(w, "Internal Server Error", 400)
+		return
+	}
+	err = fw.Close()
+	if err != nil {
+		log.Print(err)
+		http.Error(w, "Internal Server Error", 400)
+		return
+	}
+	log.Printf("%#v", h.Header)
+
+	fw = a.gsclient.Bucket("workcycles-colors").Object("uploaded/" + metadata).NewWriter(r.Context())
+	err = json.NewEncoder(fw).Encode(r.MultipartForm.Value)
+	if err != nil {
+		log.Print(err)
+		http.Error(w, "Internal Server Error", 400)
+		return
+	}
+	err = fw.Close()
+	if err != nil {
+		log.Print(err)
+		http.Error(w, "Internal Server Error", 400)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/plain")
+	w.Write([]byte("Thank You.\n\nYour upload will be reviewed in 1-2 days."))
+}
+
 func main() {
 	logRequests := flag.Bool("log-requests", false, "log requests")
 	devMode := flag.Bool("dev-mode", false, "development mode")
@@ -136,6 +209,8 @@ func main() {
 	router.GET("/", app.Index)
 	router.GET("/images/:img", app.Image)
 	router.GET("/robots.txt", app.RobotsTXT)
+	router.GET("/upload", app.Upload)
+	router.POST("/upload", app.UploadPost)
 	router.Handler("GET", "/static/*file", app.staticHandler)
 
 	// Determine port for HTTP service.
