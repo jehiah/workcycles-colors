@@ -1,6 +1,6 @@
 [
   {
-    "bike": "KR8",
+    "bike": "Kr8",
     "color": "RAL1028",
     "copyright": "@mamakr8",
     "image": "images/EE5579B9-1509-4B44-A55D-6A8B7B8E92AB.jpg",
@@ -8,7 +8,7 @@
     "src": "https://www.instagram.com/p/CN21S99rTD9/"
   },
   {
-    "bike": "FR8",
+    "bike": "Fr8",
     "color": "RAL3018",
     "copyright": "@jclindbikes",
     "image": "images/75873BA6-B3E7-4FEB-8339-0CA9DCB720BD.jpg",
@@ -16,7 +16,7 @@
     "src": "https://www.instagram.com/p/CHlPjnPhgZU/"
   },
   {
-    "bike": "FR8",
+    "bike": "Fr8",
     "color": "RAL5018",
     "copyright": "@jclindbikes",
     "image": "images/4AEDF604-5AE2-4ACA-B67B-4407B5C1B921.jpg",
@@ -24,7 +24,7 @@
     "src": "https://www.instagram.com/p/B1jl-b6hKuN/"
   },
   {
-    "bike": "FR8",
+    "bike": "Fr8",
     "color": [
       "RAL6029",
       "RAL5015"
@@ -51,5 +51,24 @@
     "image": "images/6B7D220A-5B7A-48EC-B5EC-8245DB22BFBC.jpg",
     "photo": null,
     "src": "https://www.instagram.com/p/BhiD79TgOX9/"
+  },
+  {
+    "bike": "Fr8",
+    "color": "RAL3007",
+    "copyright": "Henry @ WorkCycles",
+    "image": "images/3169f6f4-f3bf-40d5-b37e-6d793fa21f69.jpg",
+    "photo": null,
+    "src": "https://www.flickr.com/photos/henryinamsterdam/6258397323"
+  },
+  {
+    "added": "2022-02-15T22:46:00-05:00",
+    "bike": "Fr8",
+    "color": [
+      "RAL3020"
+    ],
+    "copyright": "Henry @ WorkCycles",
+    "image": "images/0ae17d2f-eae2-455a-bf87-1bd7eeba0fde.jpg",
+    "photo": null,
+    "src": "https://www.flickr.com/photos/henryinamsterdam/6258918490"
   }
 ]

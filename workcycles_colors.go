@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"embed"
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"html/template"
@@ -12,6 +14,7 @@ import (
 	"log"
 	"mime"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
@@ -21,7 +24,10 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/google/uuid"
 	"github.com/gorilla/handlers"
+	"github.com/gorilla/schema"
 	"github.com/julienschmidt/httprouter"
+	"google.golang.org/api/iterator"
+	"gopkg.in/yaml.v3"
 )
 
 //go:embed templates/*
@@ -43,12 +49,20 @@ type App struct {
 func commaInt(i int) string {
 	return humanize.Comma(int64(i))
 }
+func yamlize(i interface{}) (string, error) {
+	var b bytes.Buffer
+	e := yaml.NewEncoder(&b)
+	e.SetIndent(2)
+	err := e.Encode(i)
+	return b.String(), err
+}
 
 func newTemplate(fs fs.FS, n string) *template.Template {
 	funcMap := template.FuncMap{
 		"ToLower": strings.ToLower,
 		"Comma":   commaInt,
 		"Time":    humanize.Time,
+		"yaml":    yamlize,
 	}
 	t := template.New("empty").Funcs(funcMap)
 	return template.Must(t.ParseFS(fs, filepath.Join("templates", n), "templates/base.html"))
@@ -84,20 +98,25 @@ func (a *App) proxyGoogleStorage(w http.ResponseWriter, ctx context.Context, fil
 }
 
 func (a *App) Image(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	a.ProxyImage(w, r, ps, "images/")
+}
+func (a *App) UploadImage(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	a.ProxyImage(w, r, ps, "uploaded/")
+}
+func (a *App) ProxyImage(w http.ResponseWriter, r *http.Request, ps httprouter.Params, prefix string) {
 	img := ps.ByName("img")
-	if !strings.HasSuffix(img, ".jpg") {
+	switch filepath.Ext(img) {
+	case ".jpg", ".png":
+	default:
 		http.NotFound(w, r)
 		return
 	}
-	err := a.proxyGoogleStorage(w, r.Context(), fmt.Sprintf("images/%s", img))
+	err := a.proxyGoogleStorage(w, r.Context(), filepath.Join(prefix, img))
 	if err == storage.ErrObjectNotExist {
 		a.addExpireHeaders(w, time.Minute*10)
 		http.NotFound(w, r)
 		return
 	}
-}
-func (a *App) BikesJSON(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-
 }
 
 func (a *App) Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
@@ -108,6 +127,55 @@ func (a *App) Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params
 		log.Print(err)
 		http.Error(w, "Internal Server Error", 500)
 	}
+}
+
+var decoder = schema.NewDecoder()
+
+type Photo struct {
+	Copyright string
+	Bike      string // i.e. Fr8, Kr8
+	Colors    string
+	SRC       string // url to source
+	ImageURL  string
+	Time      time.Time
+}
+
+func (p Photo) MarshalYAML() (interface{}, error) {
+	return struct {
+		Photo interface{} `yaml:"photo"`
+	}{
+		Photo: struct {
+			Copyright string    `yaml:"copyright"`
+			Bike      string    `yaml:"bike"`
+			SRC       string    `yaml:"src"`
+			Time      time.Time `yaml:"added"`
+			Image     string    `yaml:"image"`
+			Color     []string  `yaml:"color"`
+		}{
+			Copyright: p.Copyright,
+			Bike:      p.Bike,
+			SRC:       p.SRC,
+			Time:      p.Time.Truncate(time.Minute),
+			Image:     "images/" + p.ImageURL,
+			Color:     strings.Fields(p.Colors),
+		},
+	}, nil
+}
+
+func (p Photo) Validate() error {
+	if strings.TrimSpace(p.Copyright) == "" {
+		return errors.New(`required field "Copyright" missing`)
+	}
+	if strings.TrimSpace(p.Colors) == "" {
+		return errors.New(`required field "Colors" missing`)
+	}
+	if strings.TrimSpace(p.SRC) != "" {
+		_, err := url.Parse(strings.TrimSpace(p.SRC))
+		if err != nil {
+			return errors.New(`field "Link" is invalid URL`)
+		}
+	}
+	return nil
 }
 
 func (a *App) Upload(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
@@ -125,12 +193,19 @@ func (a *App) UploadPost(w http.ResponseWriter, r *http.Request, ps httprouter.P
 		http.Error(w, "Internal Server Error", 500)
 		return
 	}
-	for _, n := range []string{"copyright", "colors"} {
-		if v := r.PostFormValue(n); v == "" {
-			http.Error(w, fmt.Sprintf("required field %q empty", n), 400)
-			return
-		}
+
+	var p Photo
+	if err := decoder.Decode(&p, r.MultipartForm.Value); err != nil {
+		log.Print(err)
+		http.Error(w, "Internal Server Error", 500)
+		return
 	}
+
+	if err := p.Validate(); err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+
 	f, h, err := r.FormFile("img")
 	if err != nil {
 		log.Print(err)
@@ -164,7 +239,9 @@ func (a *App) UploadPost(w http.ResponseWriter, r *http.Request, ps httprouter.P
 	log.Printf("%#v", h.Header)
 
 	fw = a.gsclient.Bucket("workcycles-colors").Object("uploaded/" + metadata).NewWriter(r.Context())
-	err = json.NewEncoder(fw).Encode(r.MultipartForm.Value)
+	p.Time = time.Now().UTC()
+	p.ImageURL = filename
+	err = json.NewEncoder(fw).Encode(p)
 	if err != nil {
 		log.Print(err)
 		http.Error(w, "Internal Server Error", 400)
@@ -181,9 +258,87 @@ func (a *App) UploadPost(w http.ResponseWriter, r *http.Request, ps httprouter.P
 	w.Write([]byte("Thank You.\n\nYour upload will be reviewed in 1-2 days."))
 }
 
+func (a *App) Admin(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	bucket := a.gsclient.Bucket("workcycles-colors")
+	query := &storage.Query{Prefix: "uploaded/"}
+
+	var files []string
+	it := bucket.Objects(r.Context(), query)
+	for {
+		attrs, err := it.Next()
+		if err == iterator.Done || len(files) > 50 {
+			break
+		}
+		if err != nil {
+			log.Printf("%s", err)
+			http.Error(w, "Unknown Error", 500)
+			return
+		}
+		if !strings.HasSuffix(attrs.Name, ".json") {
+			continue
+		}
+		files = append(files, attrs.Name)
+	}
+	var photos []Photo
+	for _, f := range files {
+		r, err := bucket.Object(f).NewReader(r.Context())
+		if err != nil {
+			log.Printf("%s", err)
+			http.Error(w, "Unknown Error", 500)
+			return
+		}
+		var p Photo
+		err = json.NewDecoder(r).Decode(&p)
+		if err != nil {
+			log.Printf("%s", err)
+			http.Error(w, "Unknown Error", 500)
+			return
+		}
+		photos = append(photos, p)
+	}
+
+	t := newTemplate(a.templateFS, "admin.html")
+	w.Header().Set("content-type", "text/html")
+	err := t.ExecuteTemplate(w, "admin.html", struct {
+		Photos []Photo
+	}{
+		Photos: photos,
+	})
+	if err != nil {
+		log.Printf("%s", err)
+		http.Error(w, "Unknown Error", 500)
+	}
+}
+
+func (a *App) AdminPost(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	r.ParseForm()
+	img := r.PostForm.Get("image_file")
+
+	bucket := a.gsclient.Bucket("workcycles-colors")
+	src := bucket.Object("uploaded/" + img)
+	dst := bucket.Object("images/" + img)
+	if _, err := dst.CopierFrom(src).Run(r.Context()); err != nil {
+		log.Printf("%s", err)
+		http.Error(w, "Unknown Error", 500)
+		return
+	}
+	if err := src.Delete(r.Context()); err != nil {
+		log.Printf("%s", err)
+		http.Error(w, "Unknown Error", 500)
+		return
+	}
+	if err := bucket.Object("uploaded/" + strings.TrimSuffix(img, filepath.Ext(img)) + ".json").Delete(r.Context()); err != nil {
+		log.Printf("%s", err)
+		http.Error(w, "Unknown Error", 500)
+		return
+	}
+	http.Redirect(w, r, "/_admin/", 302)
+}
+
 func main() {
 	logRequests := flag.Bool("log-requests", false, "log requests")
 	devMode := flag.Bool("dev-mode", false, "development mode")
+	enableAdmin := flag.Bool("enable-admin", false, "enable admin UI")
 	flag.Parse()
 
 	client, err := storage.NewClient(context.Background())
@@ -212,6 +367,12 @@ func main() {
 	router.GET("/upload", app.Upload)
 	router.POST("/upload", app.UploadPost)
 	router.Handler("GET", "/static/*file", app.staticHandler)
+
+	if *enableAdmin {
+		router.GET("/_admin/", app.Admin)
+		router.POST("/_admin/", app.AdminPost)
+		router.GET("/_admin/images/:img", app.UploadImage)
+	}
 
 	// Determine port for HTTP service.
 	port := os.Getenv("PORT")
