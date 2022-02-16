@@ -130,6 +130,7 @@ import {json} from "https://cdn.skypack.dev/d3-fetch@3";
 import {rgb} from "https://cdn.skypack.dev/d3-color@3";
 import {differenceEuclideanRGB} from 'https://cdn.skypack.dev/d3-color-difference';
 import {transition} from "https://cdn.skypack.dev/d3-transition@3";
+import {shuffle} from "https://cdn.skypack.dev/d3-array@3";
 
 const images = d3.selectAll("#images");
 const colors = new Set();
@@ -149,6 +150,7 @@ const ral_colors = {
   "RAL3020": d3.rgb("#FE5B29"),
   "RAL3007": d3.rgb("#5D2B3C"),
   "RAL6032": d3.rgb("#0BAF80"),
+  "RAL6035": d3.rgb("#025229"),
 }
 const colorBlack = d3.rgb("#000000");
 const colorWhite = d3.rgb("#ffffff");
@@ -163,6 +165,7 @@ let ral =   d3.select("#ral").selectAll("div.selector");
 // let frames = d3.select("#images").selectAll("div.frame");
 let sourceData = null;
 json("/static/bikes.json").then((data) => {
+  shuffle(data);
   data.forEach(d => {
     if (typeof(d.color) == "string") {d.color = [d.color]}
     d.color.forEach(dd => colors.add(dd))
