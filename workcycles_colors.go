@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+	"unicode"
 
 	"cloud.google.com/go/storage"
 	"github.com/dustin/go-humanize"
@@ -79,8 +80,16 @@ func (a *App) addExpireHeaders(w http.ResponseWriter, duration time.Duration) {
 	if a.devMode {
 		return
 	}
-	w.Header().Add("Cache-Control", fmt.Sprintf("public; max-age=%d", int(duration.Seconds())))
-	w.Header().Add("Expires", time.Now().Add(duration).Format(http.TimeFormat))
+	if w.Header().Get("Cache-Control") != "" {
+		return
+	}
+	w.Header().Set("Cache-Control", fmt.Sprintf("public; max-age=%d", int(duration.Seconds())))
+	w.Header().Set("Expires", time.Now().Add(duration).Format(http.TimeFormat))
+}
+
+func clearExpireHeaders(w http.ResponseWriter) {
+	w.Header().Del("Cache-Control")
+	w.Header().Del("Expires")
 }
 
 func (a *App) proxyGoogleStorage(w http.ResponseWriter, ctx context.Context, filename string) error {
@@ -94,6 +103,9 @@ func (a *App) proxyGoogleStorage(w http.ResponseWriter, ctx context.Context, fil
 		w.Header().Add("Content-Type", t)
 	}
 	_, err = io.Copy(w, r)
+	if err != nil {
+		clearExpireHeaders(w)
+	}
 	return err
 }
 
@@ -111,6 +123,7 @@ func (a *App) ProxyImage(w http.ResponseWriter, r *http.Request, ps httprouter.P
 		http.NotFound(w, r)
 		return
 	}
+	a.addExpireHeaders(w, time.Hour*6)
 	err := a.proxyGoogleStorage(w, r.Context(), filepath.Join(prefix, img))
 	if err == storage.ErrObjectNotExist {
 		a.addExpireHeaders(w, time.Minute*10)
@@ -141,6 +154,9 @@ type Photo struct {
 }
 
 func (p Photo) MarshalYAML() (interface{}, error) {
+	f := func(c rune) bool {
+		return !unicode.IsLetter(c) && !unicode.IsNumber(c)
+	}
 	return struct {
 		Photo interface{} `yaml:"photo"`
 	}{
@@ -157,7 +173,7 @@ func (p Photo) MarshalYAML() (interface{}, error) {
 			SRC:       p.SRC,
 			Time:      p.Time.Truncate(time.Minute),
 			Image:     "images/" + p.ImageURL,
-			Color:     strings.Fields(p.Colors),
+			Color:     strings.FieldsFunc(p.Colors, f),
 		},
 	}, nil
 }
