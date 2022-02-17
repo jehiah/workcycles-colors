@@ -135,11 +135,16 @@ func (a *App) ProxyImage(w http.ResponseWriter, r *http.Request, ps httprouter.P
 func (a *App) Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	t := newTemplate(a.templateFS, "index.html")
 	w.Header().Set("content-type", "text/html")
+	a.addExpireHeaders(w, time.Minute*15)
 	err := t.ExecuteTemplate(w, "index.html", nil)
 	if err != nil {
 		log.Print(err)
 		http.Error(w, "Internal Server Error", 500)
 	}
+}
+func (a *App) Static(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	a.addExpireHeaders(w, time.Hour*4)
+	a.staticHandler.ServeHTTP(w, r)
 }
 
 var decoder = schema.NewDecoder()
@@ -382,7 +387,7 @@ func main() {
 	router.GET("/robots.txt", app.RobotsTXT)
 	router.GET("/upload", app.Upload)
 	router.POST("/upload", app.UploadPost)
-	router.Handler("GET", "/static/*file", app.staticHandler)
+	router.GET("/static/*file", app.Static)
 
 	if *enableAdmin {
 		router.GET("/_admin/", app.Admin)
