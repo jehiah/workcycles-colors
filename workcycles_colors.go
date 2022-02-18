@@ -180,7 +180,7 @@ func (p Photo) MarshalYAML() (interface{}, error) {
 			Bike:      p.Bike,
 			SRC:       p.SRC,
 			Time:      p.Time.Truncate(time.Minute),
-			Image:     "images/" + p.ImageURL,
+			Image:     "/images/" + p.ImageURL,
 			Color:     strings.FieldsFunc(p.Colors, f),
 		},
 	}, nil
