@@ -3,25 +3,28 @@
     "bike": "Kr8",
     "color": "RAL1028",
     "copyright": "@mamakr8",
-    "image": "images/EE5579B9-1509-4B44-A55D-6A8B7B8E92AB.jpg",
+    "image": "/images/EE5579B9-1509-4B44-A55D-6A8B7B8E92AB.jpg",
     "photo": null,
-    "src": "https://www.instagram.com/p/CN21S99rTD9/"
+    "src": "https://www.instagram.com/p/CN21S99rTD9/",
+    "image_thumbnail": "/images_sm/EE5579B9-1509-4B44-A55D-6A8B7B8E92AB.jpg"
   },
   {
     "bike": "Fr8",
     "color": "RAL3018",
     "copyright": "@jclindbikes",
-    "image": "images/75873BA6-B3E7-4FEB-8339-0CA9DCB720BD.jpg",
+    "image": "/images/75873BA6-B3E7-4FEB-8339-0CA9DCB720BD.jpg",
     "photo": null,
-    "src": "https://www.instagram.com/p/CHlPjnPhgZU/"
+    "src": "https://www.instagram.com/p/CHlPjnPhgZU/",
+    "image_thumbnail": "/images_sm/75873BA6-B3E7-4FEB-8339-0CA9DCB720BD.jpg"
   },
   {
     "bike": "Fr8",
     "color": "RAL5018",
     "copyright": "@jclindbikes",
-    "image": "images/4AEDF604-5AE2-4ACA-B67B-4407B5C1B921.jpg",
+    "image": "/images/4AEDF604-5AE2-4ACA-B67B-4407B5C1B921.jpg",
     "photo": null,
-    "src": "https://www.instagram.com/p/B1jl-b6hKuN/"
+    "src": "https://www.instagram.com/p/B1jl-b6hKuN/",
+    "image_thumbnail": "/images_sm/4AEDF604-5AE2-4ACA-B67B-4407B5C1B921.jpg"
   },
   {
     "bike": "Fr8",
@@ -30,9 +33,10 @@
       "RAL5015"
     ],
     "copyright": "Henry @ WorkCycles",
-    "image": "images/A82751F1-A9C4-48B6-B87A-845CEABA0B2B.jpg",
+    "image": "/images/A82751F1-A9C4-48B6-B87A-845CEABA0B2B.jpg",
     "photo": null,
-    "src": "https://flickr.com/photos/henryinamsterdam/26892352033"
+    "src": "https://flickr.com/photos/henryinamsterdam/26892352033",
+    "image_thumbnail": "/images_sm/A82751F1-A9C4-48B6-B87A-845CEABA0B2B.jpg"
   },
   {
     "color": [
@@ -41,24 +45,27 @@
       "RAL2004"
     ],
     "copyright": "@bklynspoke",
-    "image": "images/6BAEDE61-F7E3-49CA-8A51-540BD44F5F19.jpg",
+    "image": "/images/6BAEDE61-F7E3-49CA-8A51-540BD44F5F19.jpg",
     "photo": null,
-    "src": "https://www.instagram.com/p/CVD66OaFkJ59AMDRwyaNoO3IWbwoHS_3zWyKso0/"
+    "src": "https://www.instagram.com/p/CVD66OaFkJ59AMDRwyaNoO3IWbwoHS_3zWyKso0/",
+    "image_thumbnail": "/images_sm/6BAEDE61-F7E3-49CA-8A51-540BD44F5F19.jpg"
   },
   {
     "color": "RAL5012",
     "copyright": "@jclindbikes",
-    "image": "images/6B7D220A-5B7A-48EC-B5EC-8245DB22BFBC.jpg",
+    "image": "/images/6B7D220A-5B7A-48EC-B5EC-8245DB22BFBC.jpg",
     "photo": null,
-    "src": "https://www.instagram.com/p/BhiD79TgOX9/"
+    "src": "https://www.instagram.com/p/BhiD79TgOX9/",
+    "image_thumbnail": "/images_sm/6B7D220A-5B7A-48EC-B5EC-8245DB22BFBC.jpg"
   },
   {
     "bike": "Fr8",
     "color": "RAL3007",
     "copyright": "Henry @ WorkCycles",
-    "image": "images/3169f6f4-f3bf-40d5-b37e-6d793fa21f69.jpg",
+    "image": "/images/3169f6f4-f3bf-40d5-b37e-6d793fa21f69.jpg",
     "photo": null,
-    "src": "https://www.flickr.com/photos/henryinamsterdam/6258397323"
+    "src": "https://www.flickr.com/photos/henryinamsterdam/6258397323",
+    "image_thumbnail": "/images_sm/3169f6f4-f3bf-40d5-b37e-6d793fa21f69.jpg"
   },
   {
     "added": "2022-02-15T22:46:00-05:00",
@@ -67,9 +74,10 @@
       "RAL3020"
     ],
     "copyright": "Henry @ WorkCycles",
-    "image": "images/0ae17d2f-eae2-455a-bf87-1bd7eeba0fde.jpg",
+    "image": "/images/0ae17d2f-eae2-455a-bf87-1bd7eeba0fde.jpg",
     "photo": null,
-    "src": "https://www.flickr.com/photos/henryinamsterdam/6258918490"
+    "src": "https://www.flickr.com/photos/henryinamsterdam/6258918490",
+    "image_thumbnail": "/images_sm/0ae17d2f-eae2-455a-bf87-1bd7eeba0fde.jpg"
   },
   {
     "added": "2022-02-16T04:55:00Z",
@@ -78,9 +86,10 @@
       "RAL6032"
     ],
     "copyright": "Henry @ WorkCycles",
-    "image": "images/23c32a4e-7e9f-4f1c-ab61-7d54512fe4ef.jpg",
+    "image": "/images/23c32a4e-7e9f-4f1c-ab61-7d54512fe4ef.jpg",
     "photo": null,
-    "src": "https://www.flickr.com/photos/henryinamsterdam/33675692276/"
+    "src": "https://www.flickr.com/photos/henryinamsterdam/33675692276/",
+    "image_thumbnail": "/images_sm/23c32a4e-7e9f-4f1c-ab61-7d54512fe4ef.jpg"
   },
   {
     "added": "2022-02-16T05:00:00Z",
@@ -90,9 +99,10 @@
       "RAL2004"
     ],
     "copyright": "AmericanFietser",
-    "image": "images/d710a06b-a9cc-457a-89e1-d53b85171cb9.jpg",
+    "image": "/images/d710a06b-a9cc-457a-89e1-d53b85171cb9.jpg",
     "photo": null,
-    "src": "https://americanfietser.home.blog/2019/06/28/my-workcycles-fr8/"
+    "src": "https://americanfietser.home.blog/2019/06/28/my-workcycles-fr8/",
+    "image_thumbnail": "/images_sm/d710a06b-a9cc-457a-89e1-d53b85171cb9.jpg"
   },
   {
     "added": "2022-02-16T05:23:00Z",
@@ -101,8 +111,9 @@
       "RAL6035"
     ],
     "copyright": "Nick An",
-    "image": "images/62ea5b14-7018-4136-b18d-4a3ba9fe02f6.jpg",
+    "image": "/images/62ea5b14-7018-4136-b18d-4a3ba9fe02f6.jpg",
     "photo": null,
-    "src": "https://www.facebook.com/photo/?fbid=136531458422609"
+    "src": "https://www.facebook.com/photo/?fbid=136531458422609",
+    "image_thumbnail": "/images_sm/62ea5b14-7018-4136-b18d-4a3ba9fe02f6.jpg"
   }
 ]

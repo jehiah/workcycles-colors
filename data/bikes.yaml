@@ -3,19 +3,19 @@
   src: https://www.instagram.com/p/CN21S99rTD9/
   color: RAL1028
   bike: Kr8
-  image: images/EE5579B9-1509-4B44-A55D-6A8B7B8E92AB.jpg
+  image: /images/EE5579B9-1509-4B44-A55D-6A8B7B8E92AB.jpg
 - photo:
   copyright: "@jclindbikes"
   src: https://www.instagram.com/p/CHlPjnPhgZU/
   color: RAL3018
   bike: Fr8
-  image: images/75873BA6-B3E7-4FEB-8339-0CA9DCB720BD.jpg
+  image: /images/75873BA6-B3E7-4FEB-8339-0CA9DCB720BD.jpg
 - photo:
   copyright: "@jclindbikes"
   src: https://www.instagram.com/p/B1jl-b6hKuN/
   color: RAL5018
   bike: Fr8
-  image: images/4AEDF604-5AE2-4ACA-B67B-4407B5C1B921.jpg
+  image: /images/4AEDF604-5AE2-4ACA-B67B-4407B5C1B921.jpg
 - photo:
   copyright: "Henry @ WorkCycles"
   src: https://flickr.com/photos/henryinamsterdam/26892352033
@@ -23,7 +23,7 @@
   color: 
     - RAL6029
     - RAL5015
-  image: images/A82751F1-A9C4-48B6-B87A-845CEABA0B2B.jpg
+  image: /images/A82751F1-A9C4-48B6-B87A-845CEABA0B2B.jpg
 - photo:
   copyright: "@bklynspoke"
   src: https://www.instagram.com/p/CVD66OaFkJ59AMDRwyaNoO3IWbwoHS_3zWyKso0/
@@ -31,24 +31,24 @@
     - RAL7022 # grey
     - RAL5015 # blue
     - RAL2004 # orange
-  image: images/6BAEDE61-F7E3-49CA-8A51-540BD44F5F19.jpg
+  image: /images/6BAEDE61-F7E3-49CA-8A51-540BD44F5F19.jpg
 - photo:
   copyright: "@jclindbikes"
   src: https://www.instagram.com/p/BhiD79TgOX9/
   color: RAL5012
-  image: images/6B7D220A-5B7A-48EC-B5EC-8245DB22BFBC.jpg
+  image: /images/6B7D220A-5B7A-48EC-B5EC-8245DB22BFBC.jpg
 - photo:
   copyright: "Henry @ WorkCycles"
   bike: Fr8
   color: RAL3007
-  image: images/3169f6f4-f3bf-40d5-b37e-6d793fa21f69.jpg
+  image: /images/3169f6f4-f3bf-40d5-b37e-6d793fa21f69.jpg
   src: https://www.flickr.com/photos/henryinamsterdam/6258397323
 - photo:
   copyright: "Henry @ WorkCycles"
   bike: Fr8
   src: https://www.flickr.com/photos/henryinamsterdam/6258918490
   added: 2022-02-15T22:46:00-05:00
-  image: images/0ae17d2f-eae2-455a-bf87-1bd7eeba0fde.jpg
+  image: /images/0ae17d2f-eae2-455a-bf87-1bd7eeba0fde.jpg
   color:
     - RAL3020
 - photo:
@@ -56,7 +56,7 @@
   bike: Kr8
   src: https://www.flickr.com/photos/henryinamsterdam/33675692276/
   added: 2022-02-16T04:55:00Z
-  image: images/23c32a4e-7e9f-4f1c-ab61-7d54512fe4ef.jpg
+  image: /images/23c32a4e-7e9f-4f1c-ab61-7d54512fe4ef.jpg
   color:
     - RAL6032
 - photo:
@@ -64,7 +64,7 @@
   bike: Fr8
   src: https://americanfietser.home.blog/2019/06/28/my-workcycles-fr8/
   added: 2022-02-16T05:00:00Z
-  image: images/d710a06b-a9cc-457a-89e1-d53b85171cb9.jpg
+  image: /images/d710a06b-a9cc-457a-89e1-d53b85171cb9.jpg
   color:
   - RAL7022
   - RAL2004
@@ -73,6 +73,6 @@
   bike: Fr8
   src: https://www.facebook.com/photo/?fbid=136531458422609
   added: 2022-02-16T05:23:00Z
-  image: images/62ea5b14-7018-4136-b18d-4a3ba9fe02f6.jpg
+  image: /images/62ea5b14-7018-4136-b18d-4a3ba9fe02f6.jpg
   color:
   - RAL6035

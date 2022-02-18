@@ -112,6 +112,9 @@ func (a *App) proxyGoogleStorage(w http.ResponseWriter, ctx context.Context, fil
 func (a *App) Image(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	a.ProxyImage(w, r, ps, "images/")
 }
+func (a *App) ImageThumbnail(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	a.ProxyImage(w, r, ps, "images/thumbnails/")
+}
 func (a *App) UploadImage(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	a.ProxyImage(w, r, ps, "uploaded/")
 }
@@ -384,6 +387,7 @@ func main() {
 	router := httprouter.New()
 	router.GET("/", app.Index)
 	router.GET("/images/:img", app.Image)
+	router.GET("/images_sm/:img", app.ImageThumbnail)
 	router.GET("/robots.txt", app.RobotsTXT)
 	router.GET("/upload", app.Upload)
 	router.POST("/upload", app.UploadPost)

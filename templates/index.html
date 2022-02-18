@@ -177,6 +177,7 @@ json("/static/bikes.json").then((data) => {
   shuffle(data);
   data.forEach(d => {
     if (typeof(d.color) == "string") {d.color = [d.color]}
+    if (typeof(d.image_thumbnail) == "undefined") {d.image_thumbnail = d.image}
     d.color.forEach(dd => colors.add(dd))
   })
   sourceData = data;
@@ -221,7 +222,7 @@ function updateImages(data) {
       let f = enter.append("div").attr("class", "frame")
 
       f.append("img")
-      .attr("src", d => d.image)  
+      .attr("src", d => d.image_thumbnail)  
       .attr("class", "thumbnail")
 
       let attribution = f.append("div")
