@@ -84,3 +84,11 @@
   image: /images/23813070-0738-4cc9-95ad-49c4096b8974.jpg
   color:
   - RAL3014
+- photo:
+  copyright: cargofiets.de
+  bike: Fr8
+  src: https://www.cargofiets.de/blog/2018/8/13/identity-crisis
+  added: 2022-02-18T14:31:00Z
+  image: /images/e15cc4c0-81bf-4dad-bd46-07a6fc04df31.jpg
+  color:
+  - RAL5023

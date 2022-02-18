@@ -5,7 +5,7 @@ set -e
 mkdir -p images/thumbnails
 cd images
 
-gsutil rsync gs://workcycles-colors/images/ .
+gsutil -o "GSUtil:parallel_process_count=1" rsync gs://workcycles-colors/images/ .
 for IMG in *.jpg; do
     if [ -e thumbnails/$IMG ]; then
         continue
@@ -13,4 +13,4 @@ for IMG in *.jpg; do
     sips -o thumbnails --resampleHeight 400 ${IMG}
 done
 
-gsutil rsync thumbnails gs://workcycles-colors/images/thumbnails
+gsutil -o "GSUtil:parallel_process_count=1" rsync thumbnails gs://workcycles-colors/images/thumbnails

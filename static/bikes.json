@@ -127,5 +127,17 @@
     "photo": null,
     "src": "https://www.facebook.com/WorkCycles/posts/lucys-new-pink-workcycles-kr8-bakfiets-is-ready-to-rock-ral-3014-old-pink-is-the/2473624656028905/",
     "image_thumbnail": "/images_sm/23813070-0738-4cc9-95ad-49c4096b8974.jpg"
+  },
+  {
+    "added": "2022-02-18T14:31:00Z",
+    "bike": "Fr8",
+    "color": [
+      "RAL5023"
+    ],
+    "copyright": "cargofiets.de",
+    "image": "/images/e15cc4c0-81bf-4dad-bd46-07a6fc04df31.jpg",
+    "photo": null,
+    "src": "https://www.cargofiets.de/blog/2018/8/13/identity-crisis",
+    "image_thumbnail": "/images_sm/e15cc4c0-81bf-4dad-bd46-07a6fc04df31.jpg"
   }
 ]
