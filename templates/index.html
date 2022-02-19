@@ -226,6 +226,7 @@ function updateImages(data) {
       f.append("img")
       .attr("src", d => d.image_thumbnail)  
       .attr("class", "thumbnail")
+      .attr("title", d => "WorkCycles " + d.bike + ", " + d.copyright + " (" + d.color.join(", ") + ")")
 
       let attribution = f.append("div")
       .attr("class", "attribution")
