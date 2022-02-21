@@ -143,6 +143,20 @@
     "image_thumbnail": "/images_sm/7080919c-9f7d-4eb0-afc8-bfe5b1dc65cd.jpg"
   },
   {
+    "added": "2022-02-21T02:31:00Z",
+    "bike": "Gr8",
+    "color": [
+      "RAL2004",
+      "RAL3001",
+      "RAL9005"
+    ],
+    "copyright": "Henry @ WorkCycles",
+    "image": "/images/dc0fc632-36b1-45e2-8519-99d4441d1490.jpg",
+    "photo": null,
+    "src": "https://flickr.com/photos/henryinamsterdam/34734364376/",
+    "image_thumbnail": "/images_sm/dc0fc632-36b1-45e2-8519-99d4441d1490.jpg"
+  },
+  {
     "added": "2022-02-16T05:00:00Z",
     "bike": "Fr8",
     "color": [
@@ -254,5 +268,17 @@
     "photo": null,
     "src": "https://twitter.com/Streetfilms/status/1452021971005452289",
     "image_thumbnail": "/images_sm/29f89a7e-4971-4612-9227-a9b4b748af6e.jpg"
+  },
+  {
+    "added": "2022-02-21T02:39:00Z",
+    "bike": "Fr8",
+    "color": [
+      "RAL5020"
+    ],
+    "copyright": "@papaFr8",
+    "image": "/images/b88529f9-f7bb-422e-b190-7387a986ef79.jpg",
+    "photo": null,
+    "src": "https://www.instagram.com/p/CORB0spLqPl/",
+    "image_thumbnail": "/images_sm/b88529f9-f7bb-422e-b190-7387a986ef79.jpg"
   }
 ]

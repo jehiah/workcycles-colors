@@ -95,6 +95,16 @@
   color:
   - RAL6019
 - photo:
+  copyright: "Henry @ WorkCycles"
+  bike: Gr8
+  src: https://flickr.com/photos/henryinamsterdam/34734364376/
+  added: 2022-02-21T02:31:00Z
+  image: /images/dc0fc632-36b1-45e2-8519-99d4441d1490.jpg
+  color:
+  - RAL2004
+  - RAL3001
+  - RAL9005
+- photo:
   copyright: AmericanFietser
   bike: Fr8
   src: https://americanfietser.home.blog/2019/06/28/my-workcycles-fr8/
@@ -171,3 +181,11 @@
   image: /images/29f89a7e-4971-4612-9227-a9b4b748af6e.jpg
   color:
   - RAL5015
+- photo:
+  copyright: '@papaFr8'
+  bike: Fr8
+  src: https://www.instagram.com/p/CORB0spLqPl/
+  added: 2022-02-21T02:39:00Z
+  image: /images/b88529f9-f7bb-422e-b190-7387a986ef79.jpg
+  color:
+  - RAL5020
