@@ -134,11 +134,51 @@
     "color": [
       "RAL5023"
     ],
-    "copyright": "cargofiets.de",
+    "copyright": "@cargofiets",
     "image": "/images/e15cc4c0-81bf-4dad-bd46-07a6fc04df31.jpg",
     "photo": null,
     "src": "https://www.cargofiets.de/blog/2018/8/13/identity-crisis",
     "image_thumbnail": "/images_sm/e15cc4c0-81bf-4dad-bd46-07a6fc04df31.jpg"
+  },
+  {
+    "added": "2022-02-21T00:50:00Z",
+    "bike": "Kr8",
+    "color": [
+      "RAL6037",
+      "RAL1018"
+    ],
+    "copyright": "@cargofiets",
+    "image": "/images/724e3410-36b1-462c-a041-9a7524d15ede.jpg",
+    "photo": null,
+    "src": "https://www.instagram.com/p/BpcB7m-gIxf/",
+    "image_thumbnail": "/images_sm/724e3410-36b1-462c-a041-9a7524d15ede.jpg"
+  },
+  {
+    "added": "2022-02-21T00:47:00Z",
+    "bike": "Fr8",
+    "color": [
+      "RAL7022",
+      "RAL5015",
+      "RAL3001",
+      "RAL6018"
+    ],
+    "copyright": "@cargofiets",
+    "image": "/images/e29ee9c1-f8c6-4089-9a3c-5842003fa055.jpg",
+    "photo": null,
+    "src": "https://www.instagram.com/p/Bmiudq7HmcF/",
+    "image_thumbnail": "/images_sm/e29ee9c1-f8c6-4089-9a3c-5842003fa055.jpg"
+  },
+  {
+    "added": "2022-02-21T00:53:00Z",
+    "bike": "Fr8",
+    "color": [
+      "RAL6033"
+    ],
+    "copyright": "@cargofiets",
+    "image": "/images/e5d25ab6-cb1b-4e48-af02-024b69d80b3e.jpg",
+    "photo": null,
+    "src": "https://www.instagram.com/p/BojspwKnhjf/",
+    "image_thumbnail": "/images_sm/e5d25ab6-cb1b-4e48-af02-024b69d80b3e.jpg"
   },
   {
     "added": "2022-02-19T22:22:00Z",

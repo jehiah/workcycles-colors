@@ -85,13 +85,41 @@
   color:
   - RAL3014
 - photo:
-  copyright: cargofiets.de
+  copyright: '@cargofiets'
   bike: Fr8
   src: https://www.cargofiets.de/blog/2018/8/13/identity-crisis
   added: 2022-02-18T14:31:00Z
   image: /images/e15cc4c0-81bf-4dad-bd46-07a6fc04df31.jpg
   color:
   - RAL5023
+- photo:
+  copyright: '@cargofiets'
+  bike: Kr8
+  src: https://www.instagram.com/p/BpcB7m-gIxf/
+  added: 2022-02-21T00:50:00Z
+  image: /images/724e3410-36b1-462c-a041-9a7524d15ede.jpg
+  color:
+  - RAL6037
+  - RAL1018
+- photo:
+  copyright: '@cargofiets'
+  bike: Fr8
+  src: https://www.instagram.com/p/Bmiudq7HmcF/
+  added: 2022-02-21T00:47:00Z
+  image: /images/e29ee9c1-f8c6-4089-9a3c-5842003fa055.jpg
+  color:
+  - RAL7022
+  - RAL5015
+  - RAL3001
+  - RAL6018
+- photo:
+  copyright: '@cargofiets'
+  bike: Fr8
+  src: https://www.instagram.com/p/BojspwKnhjf/
+  added: 2022-02-21T00:53:00Z
+  image: /images/e5d25ab6-cb1b-4e48-af02-024b69d80b3e.jpg
+  color:
+  - RAL6033
 - photo:
   copyright: '@PurpleClarence'
   bike: Fr8
