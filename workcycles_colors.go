@@ -146,7 +146,12 @@ func (a *App) Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params
 	}
 }
 func (a *App) Static(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	a.addExpireHeaders(w, time.Hour*4)
+	switch r.URL.Path {
+	case "/static/bikes.json":
+		a.addExpireHeaders(w, time.Minute*15)
+	default:
+		a.addExpireHeaders(w, time.Hour*12)
+	}
 	a.staticHandler.ServeHTTP(w, r)
 }
 
