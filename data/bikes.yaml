@@ -216,3 +216,29 @@
   image: /images/9db39c7f-876d-4e00-b706-de0a76ab039c.jpg
   color:
   - RAL6018
+- photo:
+  copyright: "Henry @ WorkCycles"
+  bike: Fr8
+  src: https://www.flickr.com/photos/henryinamsterdam/16833196648/
+  added: 2022-03-23T01:15:00Z
+  image: /images/9bc6181d-1358-4799-9fc4-a34caff4f3fd.jpg
+  color:
+  - RAL5019
+  - RAL3020
+- photo:
+  copyright: "Henry @ WorkCycles"
+  bike: Fr8
+  src: https://www.flickr.com/photos/henryinamsterdam/17019768572/
+  added: 2022-03-23T01:14:00Z
+  image: /images/e623a572-5a26-4cf2-a309-1d7b980231a5.jpg
+  color:
+  - RAL6029
+- photo:
+  copyright: "Henry @ WorkCycles"
+  bike: Kr8
+  src: https://www.flickr.com/photos/henryinamsterdam/12767781335/
+  added: 2022-03-23T01:19:00Z
+  image: /images/46ef6ec3-b63f-44af-889d-323dc5aeab7a.jpg
+  color:
+  - RAL6029
+  - RAL2004
