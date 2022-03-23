@@ -208,3 +208,11 @@
   image: /images/12578abc-88ea-4de3-a5fd-c721c2933003.jpg
   color:
   - RAL6018
+- photo:
+  copyright: "Henry @ WorkCycles"
+  bike: Fr8
+  src: https://www.flickr.com/photos/henryinamsterdam/25081827620/in/photostream/
+  added: 2022-03-23T01:10:00Z
+  image: /images/9db39c7f-876d-4e00-b706-de0a76ab039c.jpg
+  color:
+  - RAL6018
