@@ -357,5 +357,20 @@
     "photo": null,
     "src": "https://www.flickr.com/photos/henryinamsterdam/12767781335/",
     "image_thumbnail": "/images_sm/46ef6ec3-b63f-44af-889d-323dc5aeab7a.jpg"
+  },
+  {
+    "added": "2022-05-21T19:58:00Z",
+    "bike": "Fr8",
+    "color": [
+      "RAL5020",
+      "RAL2004",
+      "RAL6018",
+      "RAL5015"
+    ],
+    "copyright": "@harvinainennainen",
+    "image": "/images/94c09049-465a-4c2b-b08c-5cd1fbc2cff2.jpg",
+    "photo": null,
+    "src": "https://www.instagram.com/p/CerDVy4AcMX/",
+    "image_thumbnail": "/images_sm/94c09049-465a-4c2b-b08c-5cd1fbc2cff2.jpg"
   }
 ]
