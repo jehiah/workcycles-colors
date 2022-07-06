@@ -384,5 +384,17 @@
     "photo": null,
     "src": "https://twitter.com/_NickAnd/status/1512851771802230785",
     "image_thumbnail": "/images_sm/5d371bd6-566f-4650-821f-3cee8c2c56ab.jpg"
+  },
+  {
+    "added": "2022-07-06T01:18:00Z",
+    "bike": "Fr8",
+    "color": [
+      "RAL6027"
+    ],
+    "copyright": "",
+    "image": "/images/09ac3e99-ab06-4c17-8e08-d4040877123b.jpg",
+    "photo": null,
+    "src": "",
+    "image_thumbnail": "/images_sm/09ac3e99-ab06-4c17-8e08-d4040877123b.jpg"
   }
 ]
