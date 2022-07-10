@@ -190,6 +190,8 @@ function isDark(c) {
 let ral =   d3.select("#ral").selectAll("div.selector");
 // let frames = d3.select("#images").selectAll("div.frame");
 let sourceData = null;
+renderColors();
+
 json("/static/bikes.json").then((data) => {
   shuffle(data);
   data.forEach(d => {
@@ -197,8 +199,8 @@ json("/static/bikes.json").then((data) => {
     if (typeof(d.image_thumbnail) == "undefined") {d.image_thumbnail = d.image}
     d.color.forEach(dd => colors.add(dd))
   })
+  // renderColors();
   sourceData = data;
-  renderColors();
   updateImages(sourceData);
 })
 
@@ -220,12 +222,20 @@ function selectColor(_, c) {
 }
 
 function renderColors() {
-  ral.data(Array.from(colors).sort()).join("div")
+  var data = Array.from(colors).sort();
+  if (colors.size == 0 ) {
+    for (const [key, value] of Object.entries(ral_colors)) {
+      if (typeof(key) != "undefined") {
+        data.push(key)
+      }
+    }
+    // data.sort();
+  }
+  ral.data(data).join("div.selector")
   .attr("class", "selector")
   .classed("dark", d => isDark(ral_colors[d]))
   .style("background-color", d => ral_colors[d])
   .attr("title", d => d)
-  // .data("color")
   .text( d => d)
   .on("click", selectColor)
 }
