@@ -396,5 +396,18 @@
     "photo": null,
     "src": "",
     "image_thumbnail": "/images_sm/09ac3e99-ab06-4c17-8e08-d4040877123b.jpg"
+  },
+  {
+    "added": "2022-07-10T02:38:00Z",
+    "bike": "Fr8",
+    "color": [
+      "RAL9005",
+      "RAL5020"
+    ],
+    "copyright": "Sanna Hakuli",
+    "image": "/images/e998bba3-a7a9-429f-9186-519fe5400c76.jpg",
+    "photo": null,
+    "src": "https://www.facebook.com/groups/workcycles.bikes/posts/10161900603514148/",
+    "image_thumbnail": "/images_sm/e998bba3-a7a9-429f-9186-519fe5400c76.jpg"
   }
 ]
