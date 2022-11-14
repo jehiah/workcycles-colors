@@ -277,4 +277,12 @@
   image: /images/e998bba3-a7a9-429f-9186-519fe5400c76.jpg
   color:
   - RAL9005
-  - RAL5020  
+  - RAL5020
+- photo:
+  copyright: "Matt Newlove"
+  bike: Kr8
+  src: https://www.facebook.com/groups/workcycles.bikes/posts/10162174806364148/
+  added: 2022-11-14T01:21:00Z
+  image: /images/393e572f-97c0-46f4-86f1-703ece522337.jpg
+  color:
+  - RAL5017
