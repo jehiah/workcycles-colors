@@ -286,3 +286,22 @@
   image: /images/393e572f-97c0-46f4-86f1-703ece522337.jpg
   color:
   - RAL5017
+- photo:
+  copyright: '@papafr8'
+  bike: Fr8
+  src: https://www.instagram.com/papafr8/
+  added: 2022-12-30T01:31:00Z
+  image: /images/e1bc4efd-bf85-4fd2-b721-1ba718a5652e.jpg
+  color:
+  - RAL6037
+  - RAL1023
+  - RAL9005
+- photo:
+  copyright: '@mamakr8'
+  bike: Fr8
+  src: https://www.instagram.com/p/Cmstq2luKhR/
+  added: 2022-12-30T01:32:00Z
+  image: /images/cd693467-5c8a-40b6-b2bf-701685ae2fae.jpg
+  color:
+  - RAL3001
+  - RAL9003
