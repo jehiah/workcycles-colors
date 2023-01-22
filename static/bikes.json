@@ -160,14 +160,27 @@
     "added": "2022-02-16T05:00:00Z",
     "bike": "Fr8",
     "color": [
-      "RAL7022",
-      "RAL2004"
+      "RAL2004",
+      "RAL7022"
     ],
     "copyright": "AmericanFietser",
-    "image": "/images/d710a06b-a9cc-457a-89e1-d53b85171cb9.jpg",
+    "image": "/images/ca2ca40d-440c-4a47-a599-2957e3f2182b.jpg",
     "photo": null,
     "src": "https://americanfietser.home.blog/2019/06/28/my-workcycles-fr8/",
-    "image_thumbnail": "/images_sm/d710a06b-a9cc-457a-89e1-d53b85171cb9.jpg"
+    "image_thumbnail": "/images_sm/ca2ca40d-440c-4a47-a599-2957e3f2182b.jpg"
+  },
+  {
+    "added": "2023-01-22T02:06:00Z",
+    "bike": "Fr8",
+    "color": [
+      "RAL2004",
+      "RAL7022"
+    ],
+    "copyright": "AmericanFietser",
+    "image": "/images/b6973e35-35d5-45b4-a483-12912f29026d.jpg",
+    "photo": null,
+    "src": "https://www.youtube.com/watch?v=h9ipAq0XYsE",
+    "image_thumbnail": "/images_sm/b6973e35-35d5-45b4-a483-12912f29026d.jpg"
   },
   {
     "added": "2022-02-16T05:23:00Z",
