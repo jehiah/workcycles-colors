@@ -331,3 +331,20 @@
   color:
     - RAL1018
     - RAL9005
+- photo:
+  copyright: 'Alicia Nicole Thomas'
+  bike: Fr8
+  src: https://www.facebook.com/photo?fbid=10106721729861272&set=pcb.10162855969479148
+  added: 2024-02-18T03:44:00Z
+  image: /images/489da988-ea5d-49dd-b2ab-791a9f46b830.jpg
+  color:
+    - RAL9005
+    - RAL5015
+- photo:
+  copyright: '@cargofiets'
+  bike: Fr8
+  src: https://www.facebook.com/photo/?fbid=1173708376897703&set=g.5519804147
+  added: 2024-02-18T03:37:00Z
+  image: /images/d691f002-c69a-4196-8fd4-afcc37e8de5b.jpg
+  color:
+    - RAL5017
