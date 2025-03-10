@@ -348,3 +348,12 @@
   image: /images/d691f002-c69a-4196-8fd4-afcc37e8de5b.jpg
   color:
     - RAL5017
+- photo:
+  copyright: '@megan2wheels'
+  bike: Fr8
+  src: https://bsky.app/profile/megan2wheels.bsky.social/post/3lblr3l3w4m22
+  added: 2025-03-10T01:19:00Z
+  image: /images/44cfd2ff-b75b-4335-bfb6-1f6ecf3d3250.jpg
+  color:
+    - RAL6018
+    - RAL9005
